@@ -1,14 +1,20 @@
 import { useQuery, gql } from '@apollo/client'
 
 const MY_QUERY = gql`
-  query Query($email: String!) {
-    getUser(email: $email) {
+  query GetUser($getUserId: ID!) {
+    getUser(id: $getUserId) {
       firstName
+      email
+      password
     }
   }
 `
-const User = ({ email }) => {
-  const { loading, error, data } = useQuery(MY_QUERY, { variables: { email } })
+const User = ({ userId }) => {
+  const { loading, error, data } = useQuery(MY_QUERY, {
+    variables: {
+      getUserId: userId,
+    },
+  })
   if (loading) return <h1>Loading...</h1>
   if (error) return `Error! ${error}`
 
