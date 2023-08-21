@@ -4,7 +4,7 @@ import ProductService, {
 } from '../../services/product'
 
 const queries = {
-  getProducts: async (_: any, {}: {}) => {
+  getProducts: async (_: any) => {
     const res = await ProductService.getProducts()
     return res
   },
