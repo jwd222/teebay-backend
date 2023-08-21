@@ -11,34 +11,55 @@ datasource db {
 }
 
 model User {
-  id              String    @id @default(uuid())
-  firstName       String    @map("first_name")
-  lastName        String?   @map("last_name")
-  address         String    @map("address")
-  phoneNumber     String    @map("phone_numeber")
-  email           String    @unique
-  password        String
-  salt            String
-  soldProducts    Product[] @relation("SoldProducts")
-  createdProducts Product[] @relation("CreatedProducts")
-  boughtProducts  Product[] @relation("BouughtProducts")
+  id          String  @id @default(uuid())
+  firstName   String
+  lastName    String?
+  address     String
+  phoneNumber String
+  email       String  @unique
+  password    String
+  salt        String
 
-  @@map("users")
+  fromTransactions Transaction[] @relation(name: "from")
+  toTransactions   Transaction[] @relation(name: "to")
+  ownedProducts    Product[]
 }
 
 model Product {
-  id          String  @id @default(uuid())
-  title       String  @map("title")
-  category    String  @map("category")
-  description String  @map("description")
-  buyPrice    String  @map("buy_price")
-  rentPrice   String  @map("rent_price")
-  seller      User?   @relation("SoldProducts", fields: [sellerId], references: [id])
-  sellerId    String? @map("seller_id")
-  creator     User?   @relation("CreatedProducts", fields: [creatorId], references: [id])
-  creatorId   String? @map("creator_id")
-  buyer       User?   @relation("BouughtProducts", fields: [buyerId], references: [id])
-  buyerId     String? @map("buyer_id")
+  id          String @id @default(uuid())
+  title       String
+  category    String
+  description String
 
-  @@map("products")
+  buyPrice  Float
+  rentPrice Float
+
+  owner   User?   @relation(fields: [ownerId], references: [id])
+  ownerId String?
+
+  transactions Transaction[]
+}
+
+enum TransactionStatus {
+  RENTING
+  SELLING
+}
+
+model Transaction {
+  id String @id @default(uuid())
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+
+  fromUser   User   @relation(name: "from", fields: [fromUserId], references: [id])
+  fromUserId String
+
+  toUser   User   @relation(name: "to", fields: [toUserId], references: [id])
+  toUserId String
+
+  transactionStatus TransactionStatus
+
+  amount Float
+
+  createdAt DateTime @default(now())
 }

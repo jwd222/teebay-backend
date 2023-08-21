@@ -1,22 +1,28 @@
 import { ApolloServer } from '@apollo/server'
 import { User } from './user'
+import { Product } from './product'
 
 async function createApolloGraphqlServer() {
   const gqlServer = new ApolloServer({
     typeDefs: `
+        ${User.typeDefs}
+        ${Product.typeDefs}
         type Query {
-            hello: String
+            ${User.queries}
         }
         type Mutation {
             ${User.mutations}
+            ${Product.mutations}
         }
     `, // Schema
     resolvers: {
       Query: {
         ...User.resolvers.queries,
+        ...Product.resolvers.queries,
       },
       Mutation: {
         ...User.resolvers.mutations,
+        ...Product.resolvers.mutations,
       },
     },
   })
