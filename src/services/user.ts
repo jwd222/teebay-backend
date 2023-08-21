@@ -51,6 +51,7 @@ class UserService {
   }
 
   public static getUserForProduct(payload: GetUserForProductPayload) {
+    // console.log(payload)
     const { ownerId } = payload
     return prismaClient.user.findFirstOrThrow({
       where: {

@@ -6,5 +6,5 @@ export const mutations = `#graphql
         password: String!,
         address: String!,
         phoneNumber: String!
-    ): User
+    ): String
 `

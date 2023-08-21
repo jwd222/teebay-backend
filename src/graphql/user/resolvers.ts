@@ -27,7 +27,7 @@ const queries = {
 const mutations = {
   createUser: async (_: any, payload: CreateUserPayload) => {
     const res = await UserService.createUser(payload)
-    return res
+    return res.id
   },
 }
 
