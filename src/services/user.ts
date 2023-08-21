@@ -11,8 +11,7 @@ export interface CreateUserPayload {
 }
 
 export interface GetUserPayload {
-  email: string
-  // password: string
+  id: string
 }
 
 class UserService {
@@ -39,12 +38,16 @@ class UserService {
   }
 
   public static getUser(payload: GetUserPayload) {
-    const { email } = payload
+    const { id } = payload
     return prismaClient.user.findFirst({
       where: {
-        email,
+        id,
       },
     })
+  }
+
+  public static getAllUsers() {
+    return prismaClient.user.findMany()
   }
 }
 

@@ -8,6 +8,10 @@ const queries = {
     const res = await UserService.getUser(payload)
     return res
   },
+  getAllUsers: async (_: any) => {
+    const res = await UserService.getAllUsers()
+    return res
+  },
 }
 
 const mutations = {
