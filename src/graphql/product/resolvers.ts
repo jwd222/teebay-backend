@@ -1,6 +1,11 @@
 import ProductService, { CreateProductPayload } from '../../services/product'
 
-const queries = {}
+const queries = {
+  getProducts: async (_: any, {}: {}) => {
+    const res = await ProductService.getProducts()
+    return res
+  },
+}
 
 const mutations = {
   createProduct: async (_: any, payload: CreateProductPayload) => {

@@ -21,6 +21,10 @@ class ProductService {
       },
     })
   }
+
+  public static getProducts() {
+    return prismaClient.product.findMany()
+  }
 }
 
 export default ProductService

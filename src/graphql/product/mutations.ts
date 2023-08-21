@@ -1,5 +1,6 @@
 export const mutations = `#graphql
     createProduct(
+        id: String!
         title: String!, 
         category: String!, 
         description: String!, 

@@ -9,6 +9,7 @@ async function createApolloGraphqlServer() {
         ${Product.typeDefs}
         type Query {
             ${User.queries}
+            ${Product.queries}
         }
         type Mutation {
             ${User.mutations}
