@@ -1,4 +1,5 @@
 import UserService, {
+  CheckUserPayload,
   CreateUserPayload,
   GetUserForProductPayload,
   GetUserPayload,
@@ -22,12 +23,16 @@ const queries = {
     const res = await UserService.getAllUsers()
     return res
   },
+  getUserId: async (_: any, payload: CheckUserPayload) => {
+    const id = await UserService.getUserId(payload)
+    return id
+  },
 }
 
 const mutations = {
   createUser: async (_: any, payload: CreateUserPayload) => {
-    const res = await UserService.createUser(payload)
-    return res.id
+    await UserService.createUser(payload)
+    return 'user created'
   },
 }
 
