@@ -8,6 +8,10 @@ export interface CreateProductPayload {
   rentPrice: number
 }
 
+export interface GetProductFromTitle {
+  title: string
+}
+
 class ProductService {
   public static createProduct(payload: CreateProductPayload) {
     const { title, category, description, buyPrice, rentPrice } = payload
@@ -24,6 +28,15 @@ class ProductService {
 
   public static getProducts() {
     return prismaClient.product.findMany()
+  }
+
+  public static getProductFromTitle(payload: GetProductFromTitle) {
+    const { title } = payload
+    return prismaClient.product.findFirst({
+      where: {
+        title,
+      },
+    })
   }
 }
 
