@@ -14,6 +14,10 @@ export interface GetUserPayload {
   id: string
 }
 
+export interface GetUserForProductPayload {
+  ownerId: string
+}
+
 class UserService {
   public static createUser(payload: CreateUserPayload) {
     const { firstName, lastName, email, password, address, phoneNumber } =
@@ -42,6 +46,15 @@ class UserService {
     return prismaClient.user.findFirst({
       where: {
         id,
+      },
+    })
+  }
+
+  public static getUserForProduct(payload: GetUserForProductPayload) {
+    const { ownerId } = payload
+    return prismaClient.user.findFirstOrThrow({
+      where: {
+        id: ownerId,
       },
     })
   }

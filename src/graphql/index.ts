@@ -17,6 +17,20 @@ async function createApolloGraphqlServer() {
         }
     `, // Schema
     resolvers: {
+      // Product: {
+      //   owner: async (product) => {
+      //     console.log(product)
+
+      //     const { ownerId } = product
+      //     const res = await prismaClient.user.findFirstOrThrow({
+      //       where: {
+      //         id: ownerId,
+      //       },
+      //     })
+      //     return res
+      //   },
+      // },
+      ...User.resolvers.other,
       Query: {
         ...User.resolvers.queries,
         ...Product.resolvers.queries,
