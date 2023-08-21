@@ -1,7 +1,17 @@
 import UserService, {
   CreateUserPayload,
+  GetUserForProductPayload,
   GetUserPayload,
 } from '../../services/user'
+
+const other = {
+  Product: {
+    owner: async (payload: GetUserForProductPayload) => {
+      const res = await UserService.getUserForProduct(payload)
+      return res
+    },
+  },
+}
 
 const queries = {
   getUser: async (_: any, payload: GetUserPayload) => {
@@ -21,4 +31,4 @@ const mutations = {
   },
 }
 
-export const resolvers = { queries, mutations }
+export const resolvers = { other, queries, mutations }
