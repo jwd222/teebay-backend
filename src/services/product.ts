@@ -6,6 +6,7 @@ export interface CreateProductPayload {
   description: string
   buyPrice: number
   rentPrice: number
+  ownerId: string
 }
 
 export interface GetProductFromTitle {
@@ -14,7 +15,8 @@ export interface GetProductFromTitle {
 
 class ProductService {
   public static createProduct(payload: CreateProductPayload) {
-    const { title, category, description, buyPrice, rentPrice } = payload
+    const { title, category, description, buyPrice, rentPrice, ownerId } =
+      payload
     return prismaClient.product.create({
       data: {
         title,
@@ -22,6 +24,7 @@ class ProductService {
         description,
         buyPrice,
         rentPrice,
+        ownerId,
       },
     })
   }

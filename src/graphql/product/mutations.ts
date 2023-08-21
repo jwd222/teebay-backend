@@ -5,5 +5,6 @@ export const mutations = `#graphql
         description: String!, 
         buyPrice: Float!, 
         rentPrice: Float!
+        ownerId: ID
     ): String
 `
