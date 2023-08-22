@@ -27,6 +27,7 @@ class UserService {
   private static generateHash(salt: string, password: string) {
     return createHmac('sha256', salt).update(password).digest('hex')
   }
+
   public static createUser(payload: CreateUserPayload) {
     const salt = randomBytes(32).toString('hex')
     const { firstName, lastName, email, password, address, phoneNumber } =
@@ -85,6 +86,15 @@ class UserService {
   public static getAllUsers() {
     return prismaClient.user.findMany()
   }
+
+  // public static getProductsFromUserId(payload: GetUserPayload) {
+  //   const { id } = payload
+  //   return prismaClient.user.findFirstOrThrow({
+  //     where: {
+  //       id,
+  //     },
+  //   })
+  // }
 }
 
 export default UserService

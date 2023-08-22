@@ -27,6 +27,10 @@ const queries = {
     const id = await UserService.getUserId(payload)
     return id
   },
+  // getProductsFromUserId: async (_: any, payload: GetUserPayload) => {
+  //   const res = await UserService.getProductsFromUserId(payload)
+  //   return res
+  // },
 }
 
 const mutations = {

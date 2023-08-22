@@ -1,7 +1,17 @@
 import ProductService, {
   CreateProductPayload,
   GetProductFromTitle,
+  // GetProductFromUserId,
 } from '../../services/product'
+
+// const other = {
+//   User: {
+//     ownedProduct: async (payload: GetProductFromUserId) => {
+//       const res = await ProductService.getProductFromUserId(payload)
+//       return res
+//     },
+//   },
+// }
 
 const queries = {
   getProducts: async (_: any) => {

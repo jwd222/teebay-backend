@@ -1,4 +1,5 @@
 import { prismaClient } from '../lib/db'
+// import { GetUserPayload } from './user'
 
 export interface CreateProductPayload {
   title: string
@@ -12,6 +13,10 @@ export interface CreateProductPayload {
 export interface GetProductFromTitle {
   title: string
 }
+
+// export interface GetProductFromUserId {
+//   ownedProduct: string
+// }
 
 class ProductService {
   public static createProduct(payload: CreateProductPayload) {
@@ -41,6 +46,15 @@ class ProductService {
       },
     })
   }
+
+  // public static getProductFromUserId(payload: GetProductFromUserId) {
+  //   const { ownedProduct } = payload
+  //   return prismaClient.product.findFirst({
+  //     where: {
+  //       id: ownedProduct,
+  //     },
+  //   })
+  // }
 }
 
 export default ProductService
