@@ -6,6 +6,7 @@ export const typeDefs = `#graphql
         description: String! 
         buyPrice: Float!
         rentPrice: Float!
+        ownerId: String
         owner: User
     }
 `

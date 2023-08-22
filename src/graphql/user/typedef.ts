@@ -7,6 +7,5 @@ export const typeDefs = `#graphql
         password: String!
         address: String!
         phoneNumber: String!
-        ownedProducts: [Product]
     }
 `

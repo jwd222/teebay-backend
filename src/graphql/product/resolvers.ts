@@ -1,6 +1,8 @@
 import ProductService, {
   CreateProductPayload,
+  EditProductPayload,
   GetProductFromTitle,
+  GetProductsFromId,
   // GetProductFromUserId,
 } from '../../services/product'
 
@@ -22,11 +24,19 @@ const queries = {
     const res = await ProductService.getProductFromTitle(payload)
     return res
   },
+  getProductsFromId: async (_: any, payload: GetProductsFromId) => {
+    const res = await ProductService.getProductsFromId(payload)
+    return res
+  },
 }
 
 const mutations = {
   createProduct: async (_: any, payload: CreateProductPayload) => {
     const res = await ProductService.createProduct(payload)
+    return res.id
+  },
+  editProduct: async (_: any, payload: EditProductPayload) => {
+    const res = await ProductService.editProduct(payload)
     return res.id
   },
 }

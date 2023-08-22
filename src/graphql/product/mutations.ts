@@ -7,4 +7,13 @@ export const mutations = `#graphql
         rentPrice: Float!
         ownerId: ID!
     ): String
+
+    editProduct(
+        id: ID!,
+        title: String!, 
+        category: String!, 
+        description: String!, 
+        buyPrice: Float!, 
+        rentPrice: Float!
+    ): String
 `
