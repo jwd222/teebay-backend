@@ -34,8 +34,8 @@ model Product {
   buyPrice  Float
   rentPrice Float
 
-  owner   User?   @relation(fields: [ownerId], references: [id])
-  ownerId String?
+  owner   User   @relation(fields: [ownerId], references: [id])
+  ownerId String
 
   transactions Transaction[]
 }
