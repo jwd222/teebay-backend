@@ -25,6 +25,10 @@ export interface GetProductsFromId {
   ownerId: string
 }
 
+export interface DeleteProductPayload {
+  id: string
+}
+
 // export interface GetProductFromUserId {
 //   ownedProduct: string
 // }
@@ -61,7 +65,7 @@ class ProductService {
     })
   }
 
-  public static getProducts() {
+  public static getAllProducts() {
     return prismaClient.product.findMany()
   }
 
@@ -82,14 +86,14 @@ class ProductService {
     })
   }
 
-  // public static getProductFromUserId(payload: GetProductFromUserId) {
-  //   const { ownedProduct } = payload
-  //   return prismaClient.product.findFirst({
-  //     where: {
-  //       id: ownedProduct,
-  //     },
-  //   })
-  // }
+  public static deleteProduct(payload: DeleteProductPayload) {
+    const { id } = payload
+    return prismaClient.product.delete({
+      where: {
+        id,
+      },
+    })
+  }
 }
 
 export default ProductService

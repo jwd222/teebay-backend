@@ -1,5 +1,5 @@
 export const queries = `#graphql
-    getProducts: [Product]
+    getAllProducts: [Product]
     getProductsFromId(ownerId: ID): [Product]
     getProductFromTitle(title: String!): Product
 `
