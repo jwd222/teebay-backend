@@ -17,4 +17,4 @@ Node version: 18.16.0.
 5. To map the data model in "./prisma/schema.prisma" to your database schema, run `npx prisma dev --name a_name_for_the_migration` in terminal
 6. Finally run `npm run dev` to run the backend application
 
-# Contact shahjawad@iut-dhaka.edu if you encounter any errors
+#### Contact shahjawad@iut-dhaka.edu if you encounter any errors
