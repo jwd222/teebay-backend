@@ -5,6 +5,7 @@ export const mutations = `#graphql
         description: String!, 
         buyPrice: Float!, 
         rentPrice: Float!
+        rentTime: String!
         ownerId: ID!
     ): String
 
@@ -15,6 +16,7 @@ export const mutations = `#graphql
         description: String!, 
         buyPrice: Float!, 
         rentPrice: Float!
+        rentTime: String!
     ): String
 
     deleteProduct(

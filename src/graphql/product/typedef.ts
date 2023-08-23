@@ -2,11 +2,13 @@ export const typeDefs = `#graphql
     type Product {
         id: ID!
         title: String!
-        category: String
+        category: String!
         description: String! 
         buyPrice: Float!
         rentPrice: Float!
-        ownerId: String
-        owner: User
+        rentTime: String!
+        ownerId: String!
+        owner: User!
+        createdAt: String!
     }
 `

@@ -7,6 +7,7 @@ export interface CreateProductPayload {
   description: string
   buyPrice: number
   rentPrice: number
+  rentTime: string
   ownerId: string
 }
 export interface EditProductPayload {
@@ -16,6 +17,7 @@ export interface EditProductPayload {
   description: string
   buyPrice: number
   rentPrice: number
+  rentTime: string
 }
 
 export interface GetProductFromTitle {
@@ -35,8 +37,15 @@ export interface DeleteProductPayload {
 
 class ProductService {
   public static createProduct(payload: CreateProductPayload) {
-    const { title, category, description, buyPrice, rentPrice, ownerId } =
-      payload
+    const {
+      title,
+      category,
+      description,
+      buyPrice,
+      rentPrice,
+      rentTime,
+      ownerId,
+    } = payload
     return prismaClient.product.create({
       data: {
         title,
@@ -44,13 +53,15 @@ class ProductService {
         description,
         buyPrice,
         rentPrice,
+        rentTime,
         ownerId,
       },
     })
   }
 
   public static editProduct(payload: EditProductPayload) {
-    const { id, title, category, description, buyPrice, rentPrice } = payload
+    const { id, title, category, description, buyPrice, rentPrice, rentTime } =
+      payload
     return prismaClient.product.update({
       where: {
         id: id,
@@ -61,6 +72,7 @@ class ProductService {
         description,
         buyPrice,
         rentPrice,
+        rentTime,
       },
     })
   }

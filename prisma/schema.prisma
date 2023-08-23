@@ -26,13 +26,15 @@ model User {
 }
 
 model Product {
-  id          String @id @default(uuid())
+  id          String    @id @default(uuid())
   title       String
   category    String
   description String
+  createdAt   DateTime? @default(now())
 
   buyPrice  Float
   rentPrice Float
+  rentTime  String?
 
   owner   User   @relation(fields: [ownerId], references: [id])
   ownerId String
