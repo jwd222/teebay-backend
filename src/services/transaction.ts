@@ -8,6 +8,10 @@ export interface CreateTransactionPayload {
   transactionStatus: TransactionStatus
 }
 
+export interface GetTransactionFromProductId {
+  productId: string
+}
+
 class TransactionService {
   public static createTransaction(payload: CreateTransactionPayload) {
     const { productId, fromUserId, toUserId, transactionStatus } = payload
@@ -17,6 +21,17 @@ class TransactionService {
         fromUserId,
         toUserId,
         transactionStatus: transactionStatus,
+      },
+    })
+  }
+
+  public static getTransactionFromProductId(
+    payload: GetTransactionFromProductId
+  ) {
+    const { productId } = payload
+    return prismaClient.transaction.findFirstOrThrow({
+      where: {
+        productId,
       },
     })
   }

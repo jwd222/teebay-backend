@@ -8,17 +8,16 @@ async function createApolloGraphqlServer() {
     typeDefs: `
         ${User.typeDefs}
         ${Product.typeDefs}
+        ${Transaction.typeDefs}
         type Query {
             ${User.queries}
             ${Product.queries}
+            ${Transaction.queries}
         }
         type Mutation {
             ${User.mutations}
             ${Product.mutations}
             ${Transaction.mutations}
-        }
-        type Transaction {
-          ${Transaction.mutations}
         }
     `, // Schema
     resolvers: {
