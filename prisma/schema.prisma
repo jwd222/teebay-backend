@@ -61,7 +61,7 @@ model Transaction {
 
   transactionStatus TransactionStatus
 
-  amount Float
+  amount Float?
 
   createdAt DateTime @default(now())
 }
