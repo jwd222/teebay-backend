@@ -1,6 +1,7 @@
 import { ApolloServer } from '@apollo/server'
 import { User } from './user'
 import { Product } from './product'
+import { Transaction } from './transaction'
 
 async function createApolloGraphqlServer() {
   const gqlServer = new ApolloServer({
@@ -14,6 +15,10 @@ async function createApolloGraphqlServer() {
         type Mutation {
             ${User.mutations}
             ${Product.mutations}
+            ${Transaction.mutations}
+        }
+        type Transaction {
+          ${Transaction.mutations}
         }
     `, // Schema
     resolvers: {
@@ -34,10 +39,12 @@ async function createApolloGraphqlServer() {
       Query: {
         ...User.resolvers.queries,
         ...Product.resolvers.queries,
+        ...Transaction.resolvers.queries,
       },
       Mutation: {
         ...User.resolvers.mutations,
         ...Product.resolvers.mutations,
+        ...Transaction.resolvers.mutations,
       },
     },
   })
