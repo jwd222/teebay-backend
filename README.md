@@ -15,7 +15,7 @@ Node version: 18.16.0.
    - DATABASE_URL="url_string_from_own_postgres_database"
    - PORT=8000
 5. Note: Database url is of the format "postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
-6. To map the data model in "./prisma/schema.prisma" to your database schema, run `npx prisma dev --name a_name_for_the_migration` in terminal
+6. To map the data model in "./prisma/schema.prisma" to your database schema, run `npx prisma migrate dev --name a_name_for_the_migration` in terminal
 7. Finally run `npm run dev` to run the backend application
 
 #### Contact shahjawad@iut-dhaka.edu if you encounter any errors
