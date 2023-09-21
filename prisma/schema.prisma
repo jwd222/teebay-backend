@@ -50,7 +50,7 @@ enum TransactionStatus {
 model Transaction {
   id String @id @default(uuid())
 
-  product   Product @relation(fields: [productId], references: [id])
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
   productId String
 
   fromUser   User   @relation(name: "from", fields: [fromUserId], references: [id])
